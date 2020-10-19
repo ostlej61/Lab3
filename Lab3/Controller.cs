@@ -26,8 +26,27 @@ namespace Lab3
         /// <param name="flight"></param>
         public void InsertFlight(Flight flight)
         {
-            IDatabase database = new Database();
-            database.InsertFlight(flight);
+            if (flight.FlightId.Length != 6 || !flight.FlightId.Substring(0, 3).All(char.IsLetter) || !flight.FlightId.Substring(4).All(char.IsDigit))
+            {
+                return;
+            }
+            else if (flight.FlightOrigin.Length != 4 || !flight.FlightOrigin.All(char.IsLetter))
+            {
+                return;
+            }
+            else if (flight.FlightDestination.Length != 4 || !flight.FlightDestination.All(char.IsLetter))
+            {
+                return;
+            }
+            else if (!flight.FlightNumPassengers.All(char.IsDigit))
+            {
+                return;
+            }
+            else //everything is correct
+            {
+                IDatabase database = new Database();
+                database.InsertFlight(flight);
+            }
         }
 
         /// <summary>
@@ -36,8 +55,23 @@ namespace Lab3
         /// <param name="flight"></param>
         public void UpdateFlight(Flight flight)
         {
-            IDatabase database = new Database();
-            database.UpdateFlight(flight);
+            if (flight.FlightOrigin.Length != 4 || !flight.FlightOrigin.All(char.IsLetter))
+            {
+                return;
+            }
+            else if (flight.FlightDestination.Length != 4 || !flight.FlightDestination.All(char.IsLetter))
+            {
+                return;
+            }
+            else if (!flight.FlightNumPassengers.All(char.IsDigit))
+            {
+                return;
+            }
+            else //everything is correct
+            {
+                IDatabase database = new Database();
+                database.UpdateFlight(flight);
+            }
         }
 
         /// <summary>
@@ -46,8 +80,15 @@ namespace Lab3
         /// <param name="flight"></param>
         public void DeleteFlight(Flight flight)
         {
-            IDatabase database = new Database();
-            database.DeleteFlight(flight);
+            if (flight.FlightId != null)
+            {
+                IDatabase database = new Database();
+                database.DeleteFlight(flight);
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }
