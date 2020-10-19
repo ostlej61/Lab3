@@ -23,7 +23,7 @@ namespace Lab3
     public partial class MainWindow : Window
     {
         Flight holdFlight = new Flight();
-        Controller controller = new Controller();
+        IController controller = new Controller();
 
         public MainWindow()
         {

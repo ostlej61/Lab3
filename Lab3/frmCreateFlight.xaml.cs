@@ -19,7 +19,7 @@ namespace Lab3
     /// </summary>
     public partial class frmCreateFlight : Window
     {
-        Controller controller = new Controller();
+        IController controller = new Controller();
 
         public frmCreateFlight()
         {

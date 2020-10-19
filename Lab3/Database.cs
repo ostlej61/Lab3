@@ -10,7 +10,7 @@ using System.Windows;
 
 namespace Lab3
 {
-    public class Database
+    public class Database : IDatabase
     {
         private string connectionStringToDB = ConfigurationManager.ConnectionStrings["MySQLDB"].ConnectionString;
 

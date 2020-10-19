@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab3
 {
-    public class Controller
+    public class Controller : IController
     {
         /// <summary>
         /// When called, will get a list of flights from the database
@@ -14,7 +14,7 @@ namespace Lab3
         /// <returns></returns>
         public List<Flight> GetAllFlights()
         {
-            Database database = new Database();
+            IDatabase database = new Database();
             List<Flight> flightList = new List<Flight>();
             flightList = database.GetAllFlights();
             return flightList;
@@ -26,7 +26,7 @@ namespace Lab3
         /// <param name="flight"></param>
         public void InsertFlight(Flight flight)
         {
-            Database database = new Database();
+            IDatabase database = new Database();
             database.InsertFlight(flight);
         }
 
@@ -36,7 +36,7 @@ namespace Lab3
         /// <param name="flight"></param>
         public void UpdateFlight(Flight flight)
         {
-            Database database = new Database();
+            IDatabase database = new Database();
             database.UpdateFlight(flight);
         }
 
@@ -46,7 +46,7 @@ namespace Lab3
         /// <param name="flight"></param>
         public void DeleteFlight(Flight flight)
         {
-            Database database = new Database();
+            IDatabase database = new Database();
             database.DeleteFlight(flight);
         }
     }
